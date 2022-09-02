@@ -28,7 +28,6 @@ jobs:
           # cd api_yamdb/
           # запустить тесты
           pytest
-          cd api_yamdb/
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
@@ -46,6 +45,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2 
         with:
+          context: ./
           push: true
           tags: on1y4fun/yamdb_final:latest
   deploy:
