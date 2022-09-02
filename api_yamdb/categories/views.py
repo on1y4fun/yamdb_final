@@ -1,20 +1,13 @@
+from api.filters import TitleFilter
+from api.permissions import (IsAdminSuperuserOrReadOnly, OnlyAdminAndSuperuser,
+                             ReadOnly)
+from api.serializers import (CategorySerializer, GenreSerializer,
+                             TitleSerializer)
+from categories.models import Category, Genre, Title
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Avg
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import exceptions, filters, viewsets
-
-from api.permissions import (
-    IsAdminSuperuserOrReadOnly,
-    OnlyAdminAndSuperuser,
-    ReadOnly,
-)
-from categories.models import Category, Genre, Title
-from api.filters import TitleFilter
-from api.serializers import (
-    CategorySerializer,
-    GenreSerializer,
-    TitleSerializer,
-)
 
 
 class CategoryGenreViewSet(viewsets.ModelViewSet):
@@ -23,8 +16,7 @@ class CategoryGenreViewSet(viewsets.ModelViewSet):
         lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
         filter_kwargs = {self.lookup_field: self.kwargs[lookup_url_kwarg]}
         try:
-            obj = queryset.get(**filter_kwargs)
-            return obj
+            return queryset.get(**filter_kwargs)
         except ObjectDoesNotExist:
             raise exceptions.MethodNotAllowed(method='GET')
 

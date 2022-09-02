@@ -1,11 +1,12 @@
 import csv
-from django.core.management.base import BaseCommand
-import psycopg2
 import secrets
 import string
 
-from api_yamdb.settings import COMMAND_CHOICES, DATABASES
+import psycopg2
+from django.core.management.base import BaseCommand
 from users.models import User
+
+from api_yamdb.settings import COMMAND_CHOICES, DATABASES
 
 
 class Command(BaseCommand):

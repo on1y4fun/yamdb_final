@@ -1,13 +1,13 @@
 import uuid
 
+from categories.models import Category, Genre, Title
 from django.core.mail import send_mail
 from rest_framework import exceptions, filters, serializers
 from rest_framework.validators import UniqueTogetherValidator, UniqueValidator
 from rest_framework_simplejwt.tokens import RefreshToken
-
-from users.models import User
-from categories.models import Category, Genre, Title
 from reviews.models import Comment, Review
+from users.models import User
+
 from api_yamdb.settings import SENDER
 
 
@@ -52,10 +52,9 @@ class RegisterSerializer(serializers.ModelSerializer):
             [email],
         )
 
-        user = User.objects.create(
+        return User.objects.create(
             username=username, email=email, confirmation_code=confirmation_code
         )
-        return user
 
 
 class GetTokenSerializer(serializers.ModelSerializer):
