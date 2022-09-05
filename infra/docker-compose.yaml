@@ -37,4 +37,5 @@ services:
 volumes:
   static_value:
   media_value:
-  yamdb_data_volume: 
+  yamdb_data_volume:
+    external: true
