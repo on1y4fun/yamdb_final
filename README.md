@@ -79,5 +79,8 @@ docker-compose exec web python manage.py csv_to_postgresql --import users
 
 [Сергей Волков](https://github.com/Svolkov-nsk) - отзывы (Review) и комментарии (Comments): модели и view, эндпойнты, права доступа для запросов. Рейтинги произведений.
 
+## Адрес проекта
+
+http://130.193.38.52/redoc/
 
 ### Лицензия [MIT](https://opensource.org/licenses/MIT)
